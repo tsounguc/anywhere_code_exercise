@@ -1,7 +1,7 @@
 import 'package:anywhere_code_exercise/features/character_viewer/presentation/pages/viewer_home.dart';
 import 'package:flutter/material.dart';
 
-import '../features/character_viewer/presentation/pages/detail_page.dart';
+import '../features/character_viewer/presentation/pages/components/vertical_detail_page.dart';
 
 class AppRouter {
   final String productFound = 'productdound';
@@ -13,8 +13,8 @@ class AppRouter {
     switch (settings.name) {
       case ViewerHome.id:
         return MaterialPageRoute(builder: (context) => const ViewerHome());
-      case DetailPage.id:
-        return MaterialPageRoute(settings: settings, builder: (context) => const DetailPage());
+      case VerticalDetailPage.id:
+        return MaterialPageRoute(settings: settings, builder: (context) => VerticalDetailPage());
       default:
         throw Exception('Route not found!');
     }

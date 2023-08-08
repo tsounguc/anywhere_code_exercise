@@ -3,11 +3,14 @@ import 'package:anywhere_code_exercise/features/character_viewer/domain/entities
 
 class CharacterMapper {
   CharacterEntity mapModelToEntity(CharacterModel model) {
+    String text = model.text;
+    print(" Model TExt: ${model.text}");
+
     return CharacterEntity(
       firstUrl: model.firstUrl,
       image: model.icon,
-      title: model.text.substring(0, model.text.indexOf('-')).trim(),
-      description: model.text.substring(model.text.indexOf('-') + 1),
+      title: model.text.contains('-') ? text.substring(0, text.indexOf('-')).trim() : "",
+      description: model.text.contains('-') ? text.substring(model.text.indexOf('-') + 1) : "",
     );
   }
 }

@@ -10,7 +10,6 @@ abstract class CharactersApiServiceContract {
 class CharactersApiServiceImpl implements CharactersApiServiceContract {
   @override
   Future<Map<String, dynamic>> getCharacters(FlavorConfig config) async {
-    print("baseUrl: ${config.baseUrl}");
     final response = await http.get(Uri.parse(config.baseUrl!));
     if (response.statusCode == 200) {
       return json.decode(response.body) as Map<String, dynamic>;

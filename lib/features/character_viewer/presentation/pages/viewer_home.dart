@@ -1,14 +1,26 @@
+import 'dart:io';
+
+import 'package:anywhere_code_exercise/features/character_viewer/presentation/pages/components/character_listview_widget.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:anywhere_code_exercise/config_flavors.dart';
 import 'package:anywhere_code_exercise/features/character_viewer/presentation/character_viewer_blac/character_viewer_bloc.dart';
 import 'package:flutter/material.dart';
 
 import '../flavor_config_cubit/flavor_config_cubit.dart';
-import 'detail_page.dart';
+import 'components/horizontal_detail_page.dart';
+import 'components/vertical_detail_page.dart';
 
-class ViewerHome extends StatelessWidget {
+class ViewerHome extends StatefulWidget {
   static const String id = "/";
   const ViewerHome({super.key});
+
+  @override
+  State<ViewerHome> createState() => _ViewerHomeState();
+}
+
+class _ViewerHomeState extends State<ViewerHome> {
+  var selectedValue = 0;
+  var isLargeScreen = false;
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<CharacterViewerBloc, CharacterViewerState>(
@@ -44,45 +56,39 @@ class ViewerHome extends StatelessWidget {
           return Scaffold(
             backgroundColor: Theme.of(context).colorScheme.background,
             appBar: AppBar(title: Text(BlocProvider.of<FlavorConfigCubit>(context).config!.appTitle)),
-            body: Column(children: [
-              Expanded(
-                child: ListView.builder(
-                  shrinkWrap: true,
-                  itemCount: state.characters.length,
-                  itemBuilder: (BuildContext context, int index) {
-                    return Card(
-                      child: ListTile(
-                        onTap: () {
-                          Navigator.pushNamed(
-                            context,
-                            DetailPage.id,
-                            arguments: {"character": state.characters[index]},
-                          );
-                        },
-                        title: SizedBox(
-                          height: 60,
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              Text(
-                                state.characters[index].title,
-                                style: const TextStyle(color: Colors.black),
-                              ),
-                              const Icon(
-                                Icons.arrow_forward_ios_outlined,
-                                // size: 30,
-                                color: Colors.black,
-                              )
-                            ],
-                          ),
-                        ),
-                      ),
-                    );
-                  },
-                ),
-              )
-            ]),
+            body: OrientationBuilder(builder: (context, orientation) {
+              if (!(Platform.isAndroid || Platform.isIOS) && MediaQuery.of(context).size.width >= 600) {
+                isLargeScreen = true;
+              } else {
+                isLargeScreen = false;
+              }
+              return Row(
+                children: [
+                  Expanded(
+                      child: CharacterListviewWidget(
+                    itemCount: state.characters.length,
+                    onItemSelected: (int index) {
+                      if (isLargeScreen) {
+                        selectedValue = index;
+                        setState(() {});
+                      } else {
+                        Navigator.pushNamed(
+                          context,
+                          VerticalDetailPage.id,
+                          arguments: {
+                            "character": state.characters[index],
+                          },
+                        );
+                      }
+                    },
+                    list: state.characters,
+                  )),
+                  isLargeScreen
+                      ? Expanded(child: HorizontalDetailPage(selectedCharacter: state.characters[selectedValue]))
+                      : Container(),
+                ],
+              );
+            }),
           );
         }
         return Scaffold(

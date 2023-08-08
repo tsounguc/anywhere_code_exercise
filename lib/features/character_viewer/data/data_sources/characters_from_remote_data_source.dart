@@ -18,7 +18,6 @@ class CharactersFromRemoteDataSourceImpl implements CharactersFromRemoteDataSour
       Map<String, dynamic> data = await charactersApiServiceContract.getCharacters(config);
 
       List charactersData = data['RelatedTopics'];
-      print(charactersData.toString());
 
       List<Map<String, dynamic>> characterJsonObjectsList = [];
 
