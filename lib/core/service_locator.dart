@@ -1,0 +1,1 @@
+final GetIt serviceLocator = GetIt.instance
