@@ -4,6 +4,7 @@ import 'package:anywhere_code_exercise/features/character_viewer/presentation/ch
 import 'package:flutter/material.dart';
 
 import '../flavor_config_cubit/flavor_config_cubit.dart';
+import 'detail_page.dart';
 
 class ViewerHome extends StatelessWidget {
   static const String id = "/";
@@ -41,6 +42,7 @@ class ViewerHome extends StatelessWidget {
           );
         } else if (state is CharactersFoundState) {
           return Scaffold(
+            backgroundColor: Theme.of(context).colorScheme.background,
             appBar: AppBar(title: Text(BlocProvider.of<FlavorConfigCubit>(context).config!.appTitle)),
             body: Column(children: [
               Expanded(
@@ -50,11 +52,32 @@ class ViewerHome extends StatelessWidget {
                   itemBuilder: (BuildContext context, int index) {
                     return Card(
                       child: ListTile(
-                        onTap: (){},
-                          title: Text(
-                        state.characters[index].title,
-                        style: const TextStyle(color: Colors.black),
-                      )),
+                        onTap: () {
+                          Navigator.pushNamed(
+                            context,
+                            DetailPage.id,
+                            arguments: {"character": state.characters[index]},
+                          );
+                        },
+                        title: SizedBox(
+                          height: 60,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Text(
+                                state.characters[index].title,
+                                style: const TextStyle(color: Colors.black),
+                              ),
+                              const Icon(
+                                Icons.arrow_forward_ios_outlined,
+                                // size: 30,
+                                color: Colors.black,
+                              )
+                            ],
+                          ),
+                        ),
+                      ),
                     );
                   },
                 ),

@@ -9,9 +9,15 @@ void main() {
     ..baseUrl = "http://api.duckduckgo.com/?q=simpsons+characters&format=json"
     ..imageLocation = ""
     ..theme = ThemeData.light().copyWith(
-      primaryColor: const Color(0xFF123456),
+      primaryColor: const Color(0xFFFFDE00),
+      colorScheme: ColorScheme.fromSwatch().copyWith(
+        primary: const Color(0xFFFFDE00),
+        background: const Color(0xFFFFDE00),
+        secondary: const Color(0xFFFFFFFF),
+        tertiary: const Color(0xFF654321),
+      ),
       appBarTheme: ThemeData.light().appBarTheme.copyWith(
-            backgroundColor: const Color(0xFF654321),
+            backgroundColor: Colors.black,
           ),
     );
 
