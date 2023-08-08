@@ -51,6 +51,7 @@ dev_dependencies:
   equatable:
   get_it:
   dartz:
+  http:
 #  flutter_riverpod: ^2.3.6
 
 # For information on the generic Dart part of this file, see the

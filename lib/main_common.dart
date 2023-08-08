@@ -1,3 +1,4 @@
+import 'package:anywhere_code_exercise/core/service_locator.dart';
 import 'package:anywhere_code_exercise/features/character_viewer/presentation/character_viewer_blac/character_viewer_bloc.dart';
 import 'package:anywhere_code_exercise/features/character_viewer/presentation/flavor_config_cubit/flavor_config_cubit.dart';
 import 'package:anywhere_code_exercise/features/character_viewer/presentation/pages/viewer_home.dart';
@@ -7,6 +8,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'config_flavors.dart';
 
 void mainCommon(FlavorConfig config) {
+  setUpServices();
   runApp(MyApp(config: config));
 }
 
@@ -24,22 +26,17 @@ class _MyAppState extends State<MyApp> {
     return MultiBlocProvider(
       providers: [
         BlocProvider(create: (context) => CharacterViewerBloc()),
-        BlocProvider(
-          create: (context) => FlavorConfigCubit(),
-        )
+        BlocProvider(create: (context) => FlavorConfigCubit())
       ],
-      child: BlocConsumer<FlavorConfigCubit, FlavorConfigState>(
-          listener: (context, state) {
-            if (state is FlavorConfigInitial) {
-              BlocProvider.of<CharacterViewerBloc>(context).add(GetCharactersEvent(config: state.config));
-            }
-          },
-          builder: (context, state) => MaterialApp(
-                title: widget.config.appTitle,
-                theme: widget.config.theme,
-                home: const ViewerHome(),
-                debugShowCheckedModeBanner: false,
-              )),
+      child: Builder(builder: (context) {
+        BlocProvider.of<FlavorConfigCubit>(context).config = widget.config;
+        return MaterialApp(
+          title: widget.config.appTitle,
+          theme: widget.config.theme,
+          home: const ViewerHome(),
+          debugShowCheckedModeBanner: false,
+        );
+      }),
     );
   }
 }

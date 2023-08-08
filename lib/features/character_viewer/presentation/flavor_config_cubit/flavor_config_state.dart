@@ -1,9 +1,11 @@
 part of 'flavor_config_cubit.dart';
 
 @immutable
-abstract class FlavorConfigState {}
+abstract class FlavorConfigState extends Equatable {
+  const FlavorConfigState();
+}
 
 class FlavorConfigInitial extends FlavorConfigState {
-  final FlavorConfig? config;
-  FlavorConfigInitial({this.config});
+  @override
+  List<Object?> get props => [];
 }

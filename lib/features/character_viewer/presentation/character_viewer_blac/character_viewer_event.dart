@@ -5,8 +5,8 @@ abstract class CharacterViewerEvent extends Equatable {
 }
 
 class GetCharactersEvent extends CharacterViewerEvent {
-  final FlavorConfig? config;
-  const GetCharactersEvent({this.config});
+  final FlavorConfig config;
+  const GetCharactersEvent({required this.config});
   @override
   List<Object?> get props => [];
 }

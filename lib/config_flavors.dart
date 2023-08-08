@@ -4,7 +4,8 @@ enum Endpoints { items, details }
 
 class FlavorConfig {
   String appTitle;
-  Map<Endpoints, String>? apiEndpoint;
+  // Map<Endpoints, String>? apiEndpoint;
+  String? baseUrl;
   String imageLocation;
   ThemeData? theme;
 

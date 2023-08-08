@@ -6,10 +6,7 @@ import 'main_common.dart';
 void main() {
   final wireConfig = FlavorConfig()
     ..appTitle = "The Wire Characters"
-    ..apiEndpoint = {
-      Endpoints.items: "http://api.duckduckgo.com/?q=the+wire+characters&format=json",
-      Endpoints.details: ""
-    }
+    ..baseUrl = "http://api.duckduckgo.com/?q=the+wire+characters&format=json"
     ..imageLocation = ""
     ..theme = ThemeData.light().copyWith(
       primaryColor: const Color(0xFF123456),

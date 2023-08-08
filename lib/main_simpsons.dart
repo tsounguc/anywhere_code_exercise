@@ -6,10 +6,7 @@ import 'config_flavors.dart';
 void main() {
   final simpsonsConfig = FlavorConfig()
     ..appTitle = "The Simpsons Characters"
-    ..apiEndpoint = {
-      Endpoints.items: "http://api.duckduckgo.com/?q=simpsons+characters&format=json",
-      Endpoints.details: ""
-    }
+    ..baseUrl = "http://api.duckduckgo.com/?q=simpsons+characters&format=json"
     ..imageLocation = ""
     ..theme = ThemeData.light().copyWith(
       primaryColor: const Color(0xFF123456),
