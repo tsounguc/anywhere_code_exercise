@@ -5,14 +5,16 @@ import '../../../../fixtures/fixture_reader.dart';
 
 void main() {
   final testCharacterModel = CharacterModel(
-    firstUrl: '',
+    firstUrl: "https://duckduckgo.com/Butchie",
     icon: CharacterIcon(
-      height: '120',
-      url: 'myurl.com',
-      width: '120',
+      height: "",
+      url: "/i/44216db8.jpg",
+      width: "",
     ),
-    result: 'From Cameroon',
-    text: 'Christian Tsoungui ',
+    result:
+        "<a href=\"https://duckduckgo.com/Butchie\">Butchie</a><br>Butchie is a fictional character on the HBO drama series The Wire, portrayed by S. Robert Morgan. A blind man, he runs an East-Side Baltimore bar, and is Omar Little's bank and advisor. Like his character, actor S. Robert Morgan is blind; he lost his sight to macular degeneration in his twenties.",
+    text:
+        "Butchie - Butchie is a fictional character on the HBO drama series The Wire, portrayed by S. Robert Morgan. A blind man, he runs an East-Side Baltimore bar, and is Omar Little's bank and advisor. Like his character, actor S. Robert Morgan is blind; he lost his sight to macular degeneration in his twenties.",
   );
 
   group('fromJson', () {
