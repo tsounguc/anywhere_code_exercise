@@ -1,7 +1,7 @@
 import 'package:anywhere_code_exercise/core/service_locator.dart';
 import 'package:anywhere_code_exercise/features/character_viewer/presentation/character_viewer_blac/character_viewer_bloc.dart';
 import 'package:anywhere_code_exercise/features/character_viewer/presentation/flavor_config_cubit/flavor_config_cubit.dart';
-import 'package:anywhere_code_exercise/features/character_viewer/presentation/pages/viewer_home.dart';
+import 'package:anywhere_code_exercise/viewer_home.dart';
 import 'package:anywhere_code_exercise/router/app_router.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

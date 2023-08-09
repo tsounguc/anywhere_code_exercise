@@ -10,3 +10,12 @@ class GetCharactersEvent extends CharacterViewerEvent {
   @override
   List<Object?> get props => [];
 }
+
+class SearchCharacterEvent extends CharacterViewerEvent {
+  final String? query;
+  const SearchCharacterEvent({required this.query});
+
+  @override
+  // TODO: implement props
+  List<Object?> get props => throw UnimplementedError();
+}

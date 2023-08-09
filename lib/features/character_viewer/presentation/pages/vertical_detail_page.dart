@@ -1,7 +1,7 @@
 import 'package:anywhere_code_exercise/features/character_viewer/domain/entities/character_entity.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../character_viewer_blac/character_viewer_bloc.dart';
+import '../character_viewer_blac/character_viewer_bloc.dart';
 
 class VerticalDetailPage extends StatelessWidget {
   static const String id = "/detailPage";
@@ -38,11 +38,6 @@ class VerticalDetailPage extends StatelessWidget {
                       : CircleAvatar(
                           radius: 150,
                           backgroundColor: Colors.grey,
-                          // backgroundImage: character?.image.url != null && character!.image.url.isNotEmpty
-                          //     ? NetworkImage(
-                          //         "https://duckduckgo.com/${character.image.url}",
-                          //       )
-                          //     : null,
                           child: character?.image.url != null && character!.image.url.isNotEmpty
                               ? null
                               : const Icon(

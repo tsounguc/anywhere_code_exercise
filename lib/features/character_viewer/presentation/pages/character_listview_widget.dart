@@ -23,8 +23,12 @@ class _CharacterListviewWidgetState extends State<CharacterListviewWidget> {
   Widget build(BuildContext context) {
     return ListView.builder(
       shrinkWrap: true,
+      controller: ScrollController(),
       itemCount: widget.itemCount,
       itemBuilder: (BuildContext context, int index) {
+        if (widget.list[index].title.isEmpty) {
+          return Container();
+        }
         return Card(
           child: ListTile(
             onTap: () {

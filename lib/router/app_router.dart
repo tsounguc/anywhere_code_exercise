@@ -1,7 +1,7 @@
-import 'package:anywhere_code_exercise/features/character_viewer/presentation/pages/viewer_home.dart';
+import 'package:anywhere_code_exercise/viewer_home.dart';
 import 'package:flutter/material.dart';
 
-import '../features/character_viewer/presentation/pages/components/vertical_detail_page.dart';
+import '../features/character_viewer/presentation/pages/vertical_detail_page.dart';
 
 class AppRouter {
   final String productFound = 'productdound';
